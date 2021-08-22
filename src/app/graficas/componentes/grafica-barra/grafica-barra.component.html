@@ -1,0 +1,114 @@
+
+
+
+
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
+ xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" 
+    y="0px" viewBox="0 0 100 100" enable-background="new 0 0 100 100" xml:space="preserve">
+
+                        <!-- yAxe -->
+    <text 
+        *ngFor="let yAxe of yAxesData;let i= index" [attr.y]=" yAxe.yPosAxe" x="3.5" 
+        font-family="Verdana" font-size="3"
+        dominant-baseline="middle"
+        text-anchor="middle">
+        {{yAxe.label}}
+    </text>
+
+    <line *ngFor="let yAxe of yAxesData;let i= index" style="stroke: rgb(150, 150, 150); 
+            stroke-width : 0.5px ;stroke-opacity : 0.30" 
+            x1="0.5" [attr.y1]=" yAxe.yPosLabel" x2="98.3" [attr.y2]=" yAxe.yPosLabel">
+    </line>
+
+    <line 
+        style="stroke: rgb(15, 15, 15);stroke-width : 0.5px ;stroke-opacity : 1"
+        x1="8.5" y1="99" x2="8.5" y2="10"
+        >
+    </line>
+                <!-- xAxe -->
+
+    <text  *ngFor="let xAxe of xAxesData;let i= index" 
+        y="99" [attr.x]="xAxe.xPosLabel" font-family="Verdana"
+        font-size="3"
+        dominant-baseline="middle"
+        text-anchor="middle"
+        >
+        {{xAxe.label}}
+    </text>
+
+    <line *ngFor="let xAxe of xAxesData;let i= index" style="stroke: rgb(150, 150, 150); 
+        stroke-width : 0.5px ;stroke-opacity : 0.30"
+         y1="99" [attr.x1]="xAxe.xPosAxe" y2="15" [attr.x2]="xAxe.xPosAxe">
+    </line>
+
+    <line 
+        style="stroke: rgb(15, 15, 15);stroke-width : 0.5px ;stroke-opacity : 1"
+        x1="0.5" y1="95" x2="100" y2="95"
+        >
+    </line>
+                <!-- legend -->
+
+    <text 
+        x="50"
+        y="5"
+        dominant-baseline="middle"
+        text-anchor="middle"
+        font-family="Verdana" font-size="3"
+         >
+         <tspan 
+         *ngFor="let char of chartsDataset; let i = index"
+         [style]="color(i)"
+         
+         >▇▇▇▇ <tspan style="fill:rgb(15, 15, 15)">
+            {{ chartsDataset[i].label}} 
+         </tspan>
+         </tspan>
+    </text> 
+
+
+<g *ngFor="let chart of chartsDataset; let iChart = index">
+
+  <g *ngFor="let data of chart.data; let i = index"
+  barData
+  [name]="chartsDataset[iChart].label"
+  [barras]="chartsDataset.length"
+  [indice]="i"
+  [iChart]="iChart"
+  [color]="chart.color"
+  [option]="chartOptions"
+ [data]="data">
+    <rect  
+     >
+ 
+    </rect>
+    <text dominant-baseline="middle" text-anchor="middle" font-family="Verdana" font-size="3">
+        {{data}}
+    </text>
+  </g>
+   
+ </g>
+
+  <g class="marker markerOff" >
+       
+   <polygon style="fill: rgb(216, 216, 216); stroke: rgb(0, 0, 0); stroke-width: 0.1px;"
+   ></polygon>
+  <rect  width="3.1" height="1.283" style="fill: rgb(182, 70, 70);"></rect>
+  <text  style="white-space: pre; fill: rgb(51, 51, 51);font-size: 1.8px;" >paco</text>
+  <text   style="white-space: pre; fill: rgb(51, 51, 51);font-size: 2.8px;" >56</text>
+ 
+  </g>
+ <g> 
+      <circle cx = "-10" cy ="-10" r="5" fill="green"  >
+   
+</circle>
+<rect x = "-10" y ="-10" width="5" height="5">
+  
+</rect>
+ <!-- <animateMotion dur="3s"  
+    path="M -10,-10 " /> -->
+</g>
+
+  
+   
+</svg>
+ 
